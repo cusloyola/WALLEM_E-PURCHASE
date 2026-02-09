@@ -1,0 +1,21 @@
+.styled-button {
+  padding: 0.75rem;
+  background-color: #001c77;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.styled-button:hover:not(:disabled) {
+  background-color: #001c77;
+  transform: translateY(-2px);
+}
+
+.styled-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
