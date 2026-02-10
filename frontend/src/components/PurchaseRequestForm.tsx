@@ -1,162 +1,197 @@
 import React, { useState } from "react";
+import '../styles/PurchaseRequestForm.css';
+import { toast } from "react-toastify";
+
 
 interface ArticleRow {
-  qty: string;
-  unit: string;
-  article: string;
+    qty: string;
+    unit: string;
+    article: string;
 }
 
+const requestForOptions = ["Purchase - Quantifiable", "Vessel Service - Quantifiable", "Office Supplies - Quantifiable", "SOC Feeder/Co-loader - Quantifiable", "Company Car - Quantifiable", "Job Order - NonQuantifiable", "Trucking Services - Quantifiable", "Chassis Leasing - NonQuantifiable", "Pro Tank Frt Charges - NonQuantifiable", "Others - NonQuantifiable",];
+const accountOfOptions = ["Principal/Vessel", "TAD", "CLAD", "WPSI/Accounting", "WPSI/Admin", "WPSI/HR", "WPSI/Operations", "WPSI/MIS", "WPSI/Legal", "WPSI/Purchasing", "WPSI"];
+const approvalOptions = ["JUN", "LAY", "PCV", "JRC", "ANC", "JEFF", "JLV", "EDU", "MAM", "LAS", "MRC"];
+
+
 const PurchaseRequestForm: React.FC = () => {
-  const [rows, setRows] = useState<ArticleRow[]>([{ qty: "", unit: "", article: "" }]);
+    const [rows, setRows] = useState<ArticleRow[]>([{ qty: "", unit: "", article: "" }]);
 
-  const [formData, setFormData] = useState({
-    requestFor: "Purchase - Quantifiable",
-    accountOf: "",
-    purpose: "",
-    remarks: "",
-    requiredBefore: "2026-10-18",
-    approval: "JUN",
-  });
+    const [formData, setFormData] = useState({
+        requestFor: "",
+        accountOf: "",
+        purpose: "",
+        remarks: "",
+        requiredBefore: "2026-10-18",
+        approval: "Select approver",
+    });
 
-  const handleRowChange = (index: number, field: keyof ArticleRow, value: string) => {
-    const updatedRows = [...rows];
-    updatedRows[index][field] = value;
-    setRows(updatedRows);
-  };
+    const handleRowChange = (index: number, field: keyof ArticleRow, value: string) => {
+        const updatedRows = [...rows];
+        updatedRows[index][field] = value;
+        setRows(updatedRows);
+    };
 
-  const canAddRow = () => {
-    const lastRow = rows[rows.length - 1];
-    return lastRow.qty && lastRow.unit && lastRow.article;
-  };
+    const canAddRow = () => {
+        const lastRow = rows[rows.length - 1];
+        return lastRow.qty && lastRow.unit && lastRow.article;
+    };
 
-  const addRow = () => {
-    if (canAddRow()) {
-      setRows([...rows, { qty: "", unit: "", article: "" }]);
-    }
-  };
+    const addRow = () => {
+        if (canAddRow()) {
+            setRows([...rows, { qty: "", unit: "", article: "" }]);
+        }
+    };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", { ...formData, rows });
-    alert("Form submitted! Check console for data.");
-  };
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        console.log("Form submitted:", { ...formData, rows });
+        toast.success("Form submitted! Check console for data.");
+        setFormData({
+            requestFor: "",
+            accountOf: "",
+            purpose: "",
+            remarks: "",
+            requiredBefore: "2026-10-18",
+            approval: "Select approver",
+        });
+        setRows([{ qty: "", unit: "", article: "" }]);
+    };
 
-  return (
-    <form onSubmit={handleSubmit} className="p-4 border rounded space-y-4 max-w-xl">
-      <div>
-        <label className="block font-semibold">Request For *</label>
-        <select
-          value={formData.requestFor}
-          onChange={(e) => setFormData({ ...formData, requestFor: e.target.value })}
-          className="border p-2 w-full"
-        >
-          <option>Purchase - Quantifiable</option>
-          <option>Purchase - Non-Quantifiable</option>
-        </select>
-      </div>
+    return (
+        <div className="purchase-form-container">
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label className="form-label required">Request For</label>
+                    <select
+                        value={formData.requestFor}
+                        onChange={(e) => setFormData({ ...formData, requestFor: e.target.value })}
+                        className="form-select"
+                        required
+                    >
+                        <option value="">Select an option</option>
+                        {requestForOptions.map((option, index) => (
+                            <option key={index} value={option}>
+                                {option}
+                            </option>
+                        ))}
+                    </select>
+                </div>
 
-      <div>
-        <label className="block font-semibold">For Account Of *</label>
-        <input
-          type="text"
-          value={formData.accountOf}
-          onChange={(e) => setFormData({ ...formData, accountOf: e.target.value })}
-          className="border p-2 w-full"
-          required
-        />
-      </div>
+                <div className="form-group">
+                    <label className="form-label required">For Account Of</label>
+                    <select
+                        value={formData.accountOf}
+                        onChange={(e) => setFormData({ ...formData, accountOf: e.target.value })}
+                        className="form-select"
+                        required
+                    >
+                        <option value="">Please Choose</option>
+                        {accountOfOptions.map((option, index) => (
+                            <option key={index} value={option}>
+                                {option}
+                            </option>
+                        ))}
+                    </select>
+                </div>
 
-      <div>
-        <label className="block font-semibold">Purpose / Justification *</label>
-        <input
-          type="text"
-          value={formData.purpose}
-          onChange={(e) => setFormData({ ...formData, purpose: e.target.value })}
-          className="border p-2 w-full"
-          required
-        />
-      </div>
+                <div className="form-group">
+                    <label className="form-label required">Purpose / Justification</label>
+                    <textarea
+                        value={formData.purpose}
+                        onChange={(e) => setFormData({ ...formData, purpose: e.target.value })}
+                        className="form-textarea"
+                        placeholder="Enter purpose and justification"
+                        required
+                    />
+                </div>
 
-      <div>
-        <label className="block font-semibold">Any Remarks</label>
-        <textarea
-          value={formData.remarks}
-          onChange={(e) => setFormData({ ...formData, remarks: e.target.value })}
-          className="border p-2 w-full"
-        />
-      </div>
+                <div className="form-group">
+                    <label className="form-label">Any Remarks</label>
+                    <textarea
+                        value={formData.remarks}
+                        onChange={(e) => setFormData({ ...formData, remarks: e.target.value })}
+                        className="form-textarea"
+                        placeholder="Enter any additional remarks (optional)"
+                    />
+                </div>
 
-      <div>
-        <label className="block font-semibold">Required Before *</label>
-        <input
-          type="date"
-          value={formData.requiredBefore}
-          onChange={(e) => setFormData({ ...formData, requiredBefore: e.target.value })}
-          className="border p-2 w-full"
-          required
-        />
-      </div>
+                <div className="form-group">
+                    <label className="form-label required">Required Before</label>
+                    <input
+                        type="date"
+                        value={formData.requiredBefore}
+                        onChange={(e) => setFormData({ ...formData, requiredBefore: e.target.value })}
+                        className="form-input"
+                        required
+                    />
+                </div>
 
-      <div>
-        <label className="block font-semibold">For Approval *</label>
-        <select
-          value={formData.approval}
-          onChange={(e) => setFormData({ ...formData, approval: e.target.value })}
-          className="border p-2 w-full"
-        >
-          <option>JUN</option>
-          <option>FEB</option>
-          <option>MAR</option>
-        </select>
-      </div>
+                <div className="form-group">
+                    <label className="form-label required">For Approval</label>
+                    <select
+                        value={formData.approval}
+                        onChange={(e) => setFormData({ ...formData, approval: e.target.value })}
+                        className="form-select"
+                        required
+                    >
+                        <option value="">Select approver</option>
+                        {approvalOptions.map((option, index) => (
+                            <option key={index} value={option}>
+                                {option}
+                            </option>
+                        ))}
+                    </select>
+                </div>
 
-      <div>
-        <label className="block font-semibold">Articles / Services *</label>
-        {rows.map((row, index) => (
-          <div key={index} className="flex space-x-2 mb-2">
-            <input
-              type="text"
-              placeholder="Qty"
-              value={row.qty}
-              onChange={(e) => handleRowChange(index, "qty", e.target.value)}
-              className="border p-2 w-1/6"
-              required
-            />
-            <input
-              type="text"
-              placeholder="Unit"
-              value={row.unit}
-              onChange={(e) => handleRowChange(index, "unit", e.target.value)}
-              className="border p-2 w-1/6"
-              required
-            />
-            <input
-              type="text"
-              placeholder="Article/Service"
-              value={row.article}
-              onChange={(e) => handleRowChange(index, "article", e.target.value)}
-              className="border p-2 w-2/3"
-              required
-            />
-          </div>
-        ))}
-        <button
-          type="button"
-          onClick={addRow}
-          disabled={!canAddRow()}
-          className={`px-3 py-1 rounded ${
-            canAddRow() ? "bg-green-600 text-white" : "bg-gray-300 text-gray-600"
-          }`}
-        >
-          Add Row
-        </button>
-      </div>
+                <div className="articles-section">
+                    <div className="articles-header">
+                        <label className="form-label required">Articles / Services</label>
+                        <button
+                            type="button"
+                            onClick={addRow}
+                            disabled={!canAddRow()}
+                            className={`add-row-btn ${canAddRow() ? 'enabled' : 'disabled'}`}
+                        >
+                            Add Row
+                        </button>
+                    </div>
+                    {rows.map((row, index) => (
+                        <div key={index} className="article-row">
+                            <input
+                                type="text"
+                                placeholder="Qty"
+                                value={row.qty}
+                                onChange={(e) => handleRowChange(index, "qty", e.target.value)}
+                                className="article-input qty"
+                                required
+                            />
+                            <input
+                                type="text"
+                                placeholder="Unit"
+                                value={row.unit}
+                                onChange={(e) => handleRowChange(index, "unit", e.target.value)}
+                                className="article-input unit"
+                                required
+                            />
+                            <input
+                                type="text"
+                                placeholder="Article/Service"
+                                value={row.article}
+                                onChange={(e) => handleRowChange(index, "article", e.target.value)}
+                                className="article-input article"
+                                required
+                            />
+                        </div>
+                    ))}
+                </div>
 
-      <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">
-        Submit
-      </button>
-    </form>
-  );
+                <button type="submit" className="submit-btn">
+                    Submit Purchase Request
+                </button>
+            </form>
+        </div>
+    );
 };
 
 export default PurchaseRequestForm;

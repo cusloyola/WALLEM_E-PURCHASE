@@ -12,9 +12,6 @@ const NewPR: React.FC = () => {
         <h1>New Purchase Request</h1>
         <PurchaseRequestForm />
       </main>
-      {/*       <footer>
-        <small>© {new Date().getFullYear()} Wallem Philippines Shipping Inc.</small>
-      </footer> */}
     </div>
   );
 };

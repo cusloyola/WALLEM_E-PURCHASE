@@ -88,7 +88,8 @@ main h1 {
   font-size: 3rem;
   font-weight: 700;
   color: var(--header-title);
-  margin-bottom: 5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   text-align: center;
 }
 

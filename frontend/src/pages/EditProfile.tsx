@@ -1,5 +1,6 @@
 import React from 'react';
 import NavBar from '../components/Navbar';
+import ProfileSecurity from '../components/ProfileSecurity';
 
 const EditProfile: React.FC = () => {
   return (
@@ -7,8 +8,7 @@ const EditProfile: React.FC = () => {
       <NavBar />
       <main>
         <h1>Edit Profile</h1>
-        <p>This is a placeholder for the Edit Profile page.</p>
-        <p>Replace this content with your actual Edit Profile layout and components.</p>
+        <ProfileSecurity />
       </main>
       <footer>
         <small>© {new Date().getFullYear()} Wallem Philippines Shipping Inc.</small>
