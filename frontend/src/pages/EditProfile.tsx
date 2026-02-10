@@ -1,14 +1,14 @@
 import React from 'react';
 import NavBar from '../components/Navbar';
 
-const Dashboard: React.FC = () => {
+const EditProfile: React.FC = () => {
   return (
     <div className="dashboard-layout">
       <NavBar />
       <main>
-        <h1>Dashboard</h1>
-        <p>This is a placeholder for the Dashboard page.</p>
-        <p>Replace this content with your actual dashboard layout and components.</p>
+        <h1>Edit Profile</h1>
+        <p>This is a placeholder for the Edit Profile page.</p>
+        <p>Replace this content with your actual Edit Profile layout and components.</p>
       </main>
       <footer>
         <small>© {new Date().getFullYear()} Wallem Philippines Shipping Inc.</small>
@@ -17,4 +17,4 @@ const Dashboard: React.FC = () => {
   );
 };
 
-export default Dashboard;
+export default EditProfile;

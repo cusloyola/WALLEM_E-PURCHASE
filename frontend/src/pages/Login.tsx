@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // Static users for demo purposes
 export const STATIC_USERS = [
     {
+        name: "John Doe",
         email: "admin@demo.com",
         password: "admin123"
     },
@@ -110,6 +111,7 @@ function Login() {
                     // AuthToken placed in localStorage for demo purposes
                     localStorage.setItem('authToken', 'demo-token-' + Date.now());
                     localStorage.setItem('userEmail', user.email);
+                    localStorage.setItem('userName', user.name);
 
                     const toastId = toast.success("Login successful! Redirecting...");
 

@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "tailwindcss";
+
+#sidebar {
+  box-sizing: border-box;
+  height: 100vh;
+  width: 280px;
+  padding: 1rem 1rem;
+  background-color: var(--base-clr);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: transform 300ms ease-in-out, opacity 200ms ease-in-out;
+  overflow-y: auto;
+  overflow-x: hidden;
+  text-wrap: nowrap;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  transform: translateX(0);
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+
+#sidebar.sidebar-hidden {
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+#sidebar.sidebar-visible {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Backdrop for mobile */
+.sidebar-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
+}
+
+.sidebar-backdrop.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile responsive behavior */
+@media (max-width: 768px) {
+  #sidebar {
+    width: 260px;
+  }
+  
+  .sidebar-backdrop {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  .sidebar-backdrop {
+    display: none;
+  }
+}
+
+#sidebar.w-16 span,
+#sidebar.w-16 .logo {
+  display: none;
+}
+
+
+
+#sidebar.w-16 .dropdown-btn svg:last-child {
+  display: none;
+}
+
+#sidebar.w-16 {
+  width: 80px !important;
+  padding: 10px !important;
+}
+
+#sidebar.w-16 button {
+  margin-left: 0;
+  padding: 1em 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#sidebar.w-16>ul>li:first-child {
+  justify-content: center;
+}
+
+#sidebar.w-16 a,
+#sidebar.w-16 .dropdown-btn,
+#sidebar.w-16 button {
+  justify-content: center;
+}
+
+#sidebar a,
+#sidebar button {
+  border-radius: 0.75rem;
+  padding: 0.875rem 1rem;
+  text-decoration: none;
+  color: var(--text-clr);
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  width: 100%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+#sidebar a:hover,
+#sidebar button:hover {
+  background-color: var(--hover-clr);
+  color: var(--accent-clr);
+  transform: translateX(2px);
+}
+
+#sidebar a svg,
+#sidebar button svg {
+  flex-shrink: 0;
+  fill: currentColor;
+  width: 24px;
+  height: 24px;
+  transition: all 0.2s ease;
+}
+
+#sidebar a:hover svg,
+#sidebar button:hover svg {
+  fill: var(--accent-clr);
+  transform: scale(1.1);
+}
+
+#sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#sidebar ul li {
+  margin: 0.375rem 0;
+}
+
+#sidebar ul li:first-child {
+  margin-bottom: 2rem;
+}
+
+#sidebar .logo {
+  border: none !important;
+  background: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#sidebar .logo img {
+  width: 100%;
+  height: 65px;
+  object-fit: contain;
+  max-width: 200px;
+}
+
+/* Logout button positioning */
+#sidebar ul li:last-child {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+#sidebar ul li.active a {
+  color: var(--accent-clr);
+  background-color: rgba(94, 99, 255, 0.15);
+  font-weight: 600;
+  transform: translateX(4px);
+}
+
+#sidebar ul li.active a svg {
+  fill: var(--accent-clr);
+  transform: scale(1.1);
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Enhanced hover for inactive items */
+#sidebar ul li:not(.active) a:hover,
+#sidebar ul li:not(.active) button:hover {
+  background-color: rgba(94, 99, 255, 0.08);
+  transform: translateX(3px);
+}
+
+/* DateTime display styling */
+#sidebar .datetime-display {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+#sidebar .datetime-content {
+  border-radius: 0.75rem;
+  padding: 0.875rem 1rem;
+  color: var(--text-clr);
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  background: rgba(94, 99, 255, 0.1);
+  border: 1px solid rgba(94, 99, 255, 0.2);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+#sidebar .datetime-content svg {
+  flex-shrink: 0;
+  fill: var(--accent-clr);
+  width: 24px;
+  height: 24px;
+}
+
+#sidebar .datetime-text {
+  color: var(--accent-clr);
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
