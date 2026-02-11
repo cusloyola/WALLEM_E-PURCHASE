@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import NavBar from "./Navbar";
 import "../styles/OutstandingPR.css";
-import { outstandingPRData, ROWS_PER_PAGE, prColumns } from "../dummy_data/outstanding_pr_data";
+import { pendingPRData, ROWS_PER_PAGE, pprColumns } from "../dummy_data/ppr_data";
 
-const PRTable: React.FC = () => {
+const PPRTable: React.FC = () => {
     const [search, setSearch] = useState("");
     const [searchBy, setSearchBy] = useState("prNo");
     const [page, setPage] = useState(1);
     const [dateFrom, setDateFrom] = useState("2023-02-02");
     const [dateTo, setDateTo] = useState("2026-02-02");
 
-    const filteredRows = outstandingPRData.filter((row) => {
+    const filteredRows = pendingPRData.filter((row) => {
         // Text search filter
         if (search) {
             const value = row[searchBy as keyof typeof row] || "";
@@ -83,9 +83,9 @@ const PRTable: React.FC = () => {
             <NavBar />
             <main className="outstanding-pr-content">
                 <header className="outstanding-pr-header">
-                    <h1 className="outstanding-pr-title">Outstanding Purchase Requests</h1>
+                    <h1 className="outstanding-pr-title">Pending Purchase Requests</h1>
                     <p className="outstanding-pr-subtitle">
-                        View and search outstanding purchase requests. Use the filters
+                        View and search pending purchase requests. Use the filters
                         below to refine your results.
                     </p>
                 </header>
@@ -103,7 +103,7 @@ const PRTable: React.FC = () => {
                         onChange={(e) => setSearchBy(e.target.value)}
                         className="outstanding-pr-select"
                     >
-                        {prColumns.map((col) => (
+                        {pprColumns.map((col) => (
                             <option key={col.key} value={col.key}>
                                 {col.label}
                             </option>
@@ -157,7 +157,7 @@ const PRTable: React.FC = () => {
                 <table className="outstanding-pr-table">
                     <thead>
                         <tr>
-                            {prColumns.map((col) => (
+                            {pprColumns.map((col) => (
                                 <th key={col.key}>{col.label}</th>
                             ))}
                         </tr>
@@ -166,7 +166,7 @@ const PRTable: React.FC = () => {
                         {paginatedRows.length === 0 ? (
                             <tr>
                                 <td
-                                    colSpan={prColumns.length}
+                                    colSpan={pprColumns.length}
                                     className="outstanding-pr-no-data"
                                 >
                                     No records found.
@@ -175,7 +175,7 @@ const PRTable: React.FC = () => {
                         ) : (
                             paginatedRows.map((row, idx) => (
                                 <tr key={idx}>
-                                    {prColumns.map((col) => (
+                                    {pprColumns.map((col) => (
                                         <td key={col.key}>
                                             {row[col.key as keyof typeof row]}
                                         </td>
@@ -218,4 +218,4 @@ const PRTable: React.FC = () => {
     );
 };
 
-export default PRTable;
+export default PPRTable;

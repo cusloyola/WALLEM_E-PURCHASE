@@ -4,12 +4,16 @@ import { NavLink, useNavigate } from "react-router-dom";
 import "../styles/NavBar.css";
 import Sidebar from "../components/Sidebar";
 import LogoutModal from "./LogoutModal";
+import ChangePasswordModal from "./ChangePasswordModal";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import { Menu, ChevronDown, CircleUserRound } from "lucide-react";
 
 const NavBar: React.FC = () => {
   const navbarRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+  const [isChangePasswordModalOpen, setIsChangePasswordModalOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const navigate = useNavigate();
@@ -21,6 +25,19 @@ const NavBar: React.FC = () => {
     navigate("/login");
   };
 
+  const handleChangePassword = (currentPassword: string, newPassword: string) => {
+    // Add your password change logic here
+    console.log("Changing password...", { currentPassword, newPassword });
+    try {
+      setIsChangePasswordModalOpen(false);
+      toast.success("Password changed successfully!");
+
+    } catch (error) {
+      console.error("Password change failed:", error);
+      toast.error("Failed to change password. Please try again.");
+    }
+  };
+
   // Handle clicks outside dropdown to close it
   const handleOutsideClick = (event: MouseEvent) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -28,7 +45,6 @@ const NavBar: React.FC = () => {
     }
   };
 
-  // Set up event listener for outside clicks
   useEffect(() => {
     if (isProfileDropdownOpen) {
       document.addEventListener("mousedown", handleOutsideClick);
@@ -83,9 +99,11 @@ const NavBar: React.FC = () => {
               <div className="dropdown-menu">
                 <button
                   className="dropdown-item"
-                  onClick={() => navigate("/edit-profile")}
-                >
-                  Edit Profile
+                  onClick={() => {
+                    setIsChangePasswordModalOpen(true);
+                    setIsProfileDropdownOpen(false);
+                  }}                >
+                  Change Password
                 </button>
                 <button
                   className="dropdown-item"
@@ -106,14 +124,16 @@ const NavBar: React.FC = () => {
           onClick={() => setIsSidebarOpen(false)}
         />
       )}
-
-      {/* Sidebar */}
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
-
       <LogoutModal
         isOpen={isLogoutModalOpen}
         onConfirm={handleLogout}
         onCancel={() => setIsLogoutModalOpen(false)}
+      />
+      <ChangePasswordModal
+        isOpen={isChangePasswordModalOpen}
+        onConfirm={handleChangePassword}
+        onCancel={() => setIsChangePasswordModalOpen(false)}
       />
     </>
   );

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import '../styles/PurchaseRequestForm.css';
 import { toast } from "react-toastify";
+import { requestForOptions, accountOfOptions, companiesOptions, approvalOptions, officeSuppliesOptions, plateNumberOptions } from "../dummy_data/pr_data"; 
 
 
 interface ArticleRow {
@@ -9,17 +10,16 @@ interface ArticleRow {
     article: string;
 }
 
-const requestForOptions = ["Purchase - Quantifiable", "Vessel Service - Quantifiable", "Office Supplies - Quantifiable", "SOC Feeder/Co-loader - Quantifiable", "Company Car - Quantifiable", "Job Order - NonQuantifiable", "Trucking Services - Quantifiable", "Chassis Leasing - NonQuantifiable", "Pro Tank Frt Charges - NonQuantifiable", "Others - NonQuantifiable",];
-const accountOfOptions = ["Principal/Vessel", "TAD", "CLAD", "WPSI/Accounting", "WPSI/Admin", "WPSI/HR", "WPSI/Operations", "WPSI/MIS", "WPSI/Legal", "WPSI/Purchasing", "WPSI"];
-const approvalOptions = ["JUN", "LAY", "PCV", "JRC", "ANC", "JEFF", "JLV", "EDU", "MAM", "LAS", "MRC"];
-
-
 const PurchaseRequestForm: React.FC = () => {
     const [rows, setRows] = useState<ArticleRow[]>([{ qty: "", unit: "", article: "" }]);
 
     const [formData, setFormData] = useState({
         requestFor: "",
         accountOf: "",
+        officeSupplies: "",
+        companies: "",
+        companyCar: "",
+        plateNumber: "",
         purpose: "",
         remarks: "",
         requiredBefore: "2026-10-18",
@@ -46,10 +46,14 @@ const PurchaseRequestForm: React.FC = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         console.log("Form submitted:", { ...formData, rows });
-        toast.success("Form submitted! Check console for data.");
+        toast.success("Purchase request submitted successfully!");
         setFormData({
             requestFor: "",
             accountOf: "",
+            officeSupplies: "",
+            companies: "",
+            companyCar: "",
+            plateNumber: "",
             purpose: "",
             remarks: "",
             requiredBefore: "2026-10-18",
@@ -77,6 +81,62 @@ const PurchaseRequestForm: React.FC = () => {
                         ))}
                     </select>
                 </div>
+
+                {formData.requestFor === "Company Car - Quantifiable" && (
+                    <div className="form-group">
+                        <label className="form-label required">Plate Number</label>
+                        <select
+                            value={formData.plateNumber}
+                            onChange={(e) => setFormData({ ...formData, plateNumber: e.target.value })}
+                            className="form-select"
+                            required
+                        >
+                            <option value="">Select a car plate number</option>
+                            {plateNumberOptions.map((option, index) => (
+                                <option key={index} value={option}>
+                                    {option}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                )}
+
+                {formData.requestFor === "Vessel Service - Quantifiable" && (
+                    <div className="form-group">
+                        <label className="form-label required">Companies</label>
+                        <select
+                            value={formData.companies}
+                            onChange={(e) => setFormData({ ...formData, companies: e.target.value })}
+                            className="form-select"
+                            required
+                        >
+                            <option value="">Select a company</option>
+                            {companiesOptions.map((option, index) => (
+                                <option key={index} value={option}>
+                                    {option}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                )}
+                {formData.requestFor === "Office Supplies - Quantifiable" && (
+                    <div className="form-group">
+                        <label className="form-label required">Office Supplies</label>
+                        <select
+                            value={formData.officeSupplies}
+                            onChange={(e) => setFormData({ ...formData, officeSupplies: e.target.value })}
+                            className="form-select"
+                            required
+                        >
+                            <option value="">Select office supplies</option>
+                            {officeSuppliesOptions.map((option, index) => (
+                                <option key={index} value={option}>
+                                    {option}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                )}
 
                 <div className="form-group">
                     <label className="form-label required">For Account Of</label>

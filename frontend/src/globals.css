@@ -61,13 +61,6 @@ header {
   color: var(--header-title);
   padding: 1.5rem 0;
   text-align: center;
-  margin-top: 3rem;
-}
-
-header h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
 }
 
 main {
@@ -79,9 +72,6 @@ main {
   justify-content: center;
   padding: 2rem 1rem;
   /* Ensure the layout spans the full height of the viewport */
-  opacity: 0;
-  transform: translateY(5px);
-  animation: fadeInUp 0.6s ease-out forwards;
 }
 
 main h1 {

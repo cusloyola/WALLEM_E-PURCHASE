@@ -10,6 +10,9 @@ const NewPR: React.FC = () => {
       </header> */}
       <main>
         <h1>New Purchase Request</h1>
+        <p className="outstanding-pr-subtitle">
+          Create a new purchase request by filling out the form below.
+        </p>
         <PurchaseRequestForm />
       </main>
     </div>

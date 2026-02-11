@@ -1,9 +1,9 @@
 /* ============================================
-   MODERN PREMIUM PROCESSED REFUND PAGE DESIGN
+   OUTSTANDING PURCHASE REQUESTS - TABLE
    ============================================ */
 
 /* Page Wrapper - Gradient Background */
-.processed-refund-root {
+.outstanding-pr-root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -16,7 +16,7 @@
 }
 
 /* Animated background pattern */
-.processed-refund-root::before {
+.outstanding-pr-root::before {
   content: '';
   position: absolute;
   top: 0;
@@ -28,24 +28,11 @@
     radial-gradient(circle at 80% 70%, hsla(225, 100%, 25%, 0.03) 0%, transparent 50%),
     radial-gradient(circle at 50% 50%, hsla(225, 100%, 30%, 0.02) 0%, transparent 50%);
   pointer-events: none;
-  animation: backgroundPulse 15s ease-in-out infinite;
   z-index: 0;
 }
 
-@keyframes backgroundPulse {
-
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.7;
-  }
-}
-
 /* Content Container */
-.processed-refund-content {
+.outstanding-pr-content {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -58,35 +45,17 @@
   z-index: 1;
 }
 
-/* Header Section */
-.processed-refund-header {
-  width: 100%;
+/* Title with Gradient */
+.outstanding-pr-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--header-title);
+  margin-top: 2rem;
   margin-bottom: 2rem;
   text-align: center;
-  animation: fadeInDown 0.8s ease-out;
 }
 
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Title with Gradient */
-.processed-refund-title {
-  font-size: 3.2rem;
-  font-weight: 700;
-  background-size: 200% 200%;
-  text-transform: none;
-}
-
-.processed-refund-subtitle {
+.outstanding-pr-subtitle {
   font-size: 1.1rem;
   color: hsl(220, 25%, 40%);
   margin-bottom: 0.5rem;
@@ -95,10 +64,10 @@
 }
 
 /* Toolbar - Glassmorphism */
-.processed-refund-toolbar {
+.outstanding-pr-toolbar {
   display: flex;
-   flex-direction: row;
-   align-items: center;
+  flex-direction: row;
+  align-items: center;
   gap: 1rem;
   margin-bottom: 1.5rem;
   width: 100%;
@@ -114,42 +83,30 @@
   padding: 1.2rem 1.5rem;
   border: 1.5px solid rgba(255, 255, 255, 0.5);
   transition: all 0.3s ease;
-  animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.processed-refund-search-group {
+.outstanding-pr-search-group {
   display: flex;
   align-items: center;
   gap: 1rem;
-   flex: 1;
+  flex: 1;
 }
 
-.processed-refund-date-group {
+.outstanding-pr-date-group {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.processed-refund-label {
+.outstanding-pr-label {
   font-weight: 600;
   color: var(--color-primary);
   white-space: nowrap;
 }
 
 /* Select Dropdown */
-.processed-refund-select {
+.outstanding-pr-select {
   padding: 0.65rem 2.5rem 0.65rem 1rem;
   border-radius: 0.75rem;
   border: 1.5px solid rgba(0, 28, 119, 0.15);
@@ -169,7 +126,7 @@
   background-size: 1.2rem;
 }
 
-.processed-refund-select:focus {
+.outstanding-pr-select:focus {
   border: 2px solid var(--color-primary);
   outline: none;
   box-shadow: 0 4px 12px 0 rgba(0, 28, 119, 0.12),
@@ -177,13 +134,13 @@
   transform: translateY(-1px);
 }
 
-.processed-refund-select:hover {
+.outstanding-pr-select:hover {
   border-color: var(--color-primary);
   transform: translateY(-1px);
 }
 
 /* Search Input */
-.processed-refund-search {
+.outstanding-pr-search {
   flex: 1;
   padding: 0.6rem 1rem;
   border-radius: 0.75rem;
@@ -193,10 +150,10 @@
   font-size: 1rem;
   box-shadow: 0 2px 8px 0 rgba(0, 28, 119, 0.06);
   transition: all 0.3s ease;
-   min-width: 150px;
+  min-width: 150px;
 }
 
-.processed-refund-search:focus {
+.outstanding-pr-search:focus {
   border: 2px solid var(--color-primary);
   outline: none;
   box-shadow: 0 4px 12px 0 rgba(0, 28, 119, 0.12),
@@ -204,12 +161,12 @@
   transform: translateY(-1px);
 }
 
-.processed-refund-search::placeholder {
+.outstanding-pr-search::placeholder {
   color: hsl(220, 15%, 60%);
 }
 
 /* Date Input */
-.processed-refund-date-input {
+.outstanding-pr-date-input {
   padding: 0.6rem 1rem;
   border-radius: 0.75rem;
   border: 1.5px solid rgba(0, 28, 119, 0.15);
@@ -221,17 +178,17 @@
   width: 160px;
 }
 
-.processed-refund-date-input::-webkit-calendar-picker-indicator {
+.outstanding-pr-date-input::-webkit-calendar-picker-indicator {
   margin-right: 0.1rem;
   padding: 0.15rem;
   cursor: pointer;
 }
 
-.processed-refund-date-input::-webkit-datetime-edit {
+.outstanding-pr-date-input::-webkit-datetime-edit {
   padding-right: 0.1rem;
 }
 
-.processed-refund-date-input:focus {
+.outstanding-pr-date-input:focus {
   border: 2px solid var(--color-primary);
   outline: none;
   box-shadow: 0 4px 12px 0 rgba(0, 28, 119, 0.12),
@@ -240,7 +197,7 @@
 }
 
 /* Refresh Button */
-.processed-refund-refresh-btn {
+.outstanding-pr-refresh-btn {
   padding: 0.6rem 1.5rem;
   border-radius: 0.75rem;
   border: none;
@@ -254,23 +211,22 @@
   white-space: nowrap;
 }
 
-.processed-refund-refresh-btn:hover {
+.outstanding-pr-refresh-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px 0 rgba(0, 28, 119, 0.35);
 }
 
-.processed-refund-refresh-btn:active {
+.outstanding-pr-refresh-btn:active {
   transform: translateY(0);
 }
 
 /* Info Section */
-.processed-refund-info-section {
+.outstanding-pr-info-section {
   width: 100%;
   margin-bottom: 1.5rem;
-  animation: fadeInUp 0.8s ease-out 0.3s both;
 }
 
-.processed-refund-info-card {
+.outstanding-pr-info-card {
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(20px);
   border-radius: 1rem;
@@ -284,26 +240,26 @@
   flex-wrap: wrap;
 }
 
-.processed-refund-info-links {
+.outstanding-pr-info-links {
   display: flex;
   gap: 1.5rem;
   align-items: center;
 }
 
-.processed-refund-info-actions {
+.outstanding-pr-info-actions {
   display: flex;
   gap: 1rem;
   align-items: center;
 }
 
-.processed-refund-info-title {
+.outstanding-pr-info-title {
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--color-primary);
   margin: 0;
 }
 
-.processed-refund-info-link {
+.outstanding-pr-info-link {
   color: var(--color-primary);
   text-decoration: underline;
   font-weight: 500;
@@ -311,12 +267,12 @@
   font-size: 0.95rem;
 }
 
-.processed-refund-info-link:hover {
+.outstanding-pr-info-link:hover {
   color: hsl(225, 100%, 30%);
   text-decoration: none;
 }
 
-.processed-refund-info-action-btn {
+.outstanding-pr-info-action-btn {
   padding: 0.6rem 1.2rem;
   border-radius: 0.75rem;
   border: none;
@@ -332,35 +288,35 @@
   font-size: 0.95rem;
 }
 
-.processed-refund-info-action-btn:hover:not(:disabled) {
+.outstanding-pr-info-action-btn:hover:not(:disabled) {
   background: linear-gradient(135deg, hsl(225, 100%, 25%), hsl(225, 100%, 20%));
   box-shadow: 0 6px 16px 0 rgba(0, 28, 119, 0.2);
   transform: translateY(-2px);
 }
 
-.processed-refund-info-action-btn:disabled {
+.outstanding-pr-info-action-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.processed-refund-info-action-btn.back {
+.outstanding-pr-info-action-btn.back {
   background: linear-gradient(135deg, hsl(200, 70%, 50%), hsl(200, 75%, 45%));
 }
 
-.processed-refund-info-action-btn.back:hover:not(:disabled) {
+.outstanding-pr-info-action-btn.back:hover:not(:disabled) {
   background: linear-gradient(135deg, hsl(200, 75%, 45%), hsl(200, 80%, 40%));
 }
 
-.processed-refund-info-action-btn.forward {
+.outstanding-pr-info-action-btn.forward {
   background: linear-gradient(135deg, hsl(120, 60%, 50%), hsl(120, 65%, 45%));
 }
 
-.processed-refund-info-action-btn.forward:hover:not(:disabled) {
+.outstanding-pr-info-action-btn.forward:hover:not(:disabled) {
   background: linear-gradient(135deg, hsl(120, 65%, 45%), hsl(120, 70%, 40%));
 }
 
 /* Table Container - Glassmorphism */
-.processed-refund-table-container {
+.outstanding-pr-table-container {
   width: 100%;
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(20px);
@@ -373,24 +329,23 @@
   border: 1.5px solid rgba(255, 255, 255, 0.6);
   overflow: hidden;
   margin-bottom: 1.5rem;
-  animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
 /* Table Styles */
-.processed-refund-table {
+.outstanding-pr-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.95rem;
 }
 
-.processed-refund-table thead {
+.outstanding-pr-table thead {
   background: linear-gradient(135deg,
       hsla(225, 100%, 23%, 0.08) 0%,
       hsla(225, 100%, 30%, 0.08) 100%);
   border-bottom: 2px solid rgba(0, 28, 119, 0.15);
 }
 
-.processed-refund-table th {
+.outstanding-pr-table th {
   padding: 1rem 1.2rem;
   text-align: left;
   font-weight: 700;
@@ -400,31 +355,31 @@
   letter-spacing: 0.5px;
 }
 
-.processed-refund-checkbox-col {
+.outstanding-pr-checkbox-col {
   width: 50px;
   text-align: center;
 }
 
-.processed-refund-table td input[type="checkbox"] {
+.outstanding-pr-table td input[type="checkbox"] {
   cursor: pointer;
   width: 18px;
   height: 18px;
   accent-color: var(--color-primary);
 }
 
-.processed-refund-table tbody tr.selected {
+.outstanding-pr-table tbody tr.selected {
   background: linear-gradient(90deg,
       hsla(225, 100%, 90%, 0.6) 0%,
       hsla(225, 100%, 85%, 0.5) 100%);
   border-left: 3px solid var(--color-primary);
 }
 
-.processed-refund-table tbody tr {
+.outstanding-pr-table tbody tr {
   border-bottom: 1px solid rgba(0, 28, 119, 0.08);
   transition: all 0.3s ease;
 }
 
-.processed-refund-table tbody tr:hover {
+.outstanding-pr-table tbody tr:hover {
   background: linear-gradient(90deg,
       hsla(225, 100%, 23%, 0.03) 0%,
       hsla(225, 100%, 30%, 0.05) 50%,
@@ -433,13 +388,13 @@
   box-shadow: 0 2px 8px 0 rgba(0, 28, 119, 0.06);
 }
 
-.processed-refund-table td {
+.outstanding-pr-table td {
   padding: 1rem 1.2rem;
   color: var(--text-clr);
   vertical-align: middle;
 }
 
-.processed-refund-no-data {
+.outstanding-pr-no-data {
   text-align: center;
   padding: 3rem 1rem !important;
   color: hsl(220, 15%, 50%);
@@ -448,16 +403,15 @@
 }
 
 /* Pagination */
-.processed-refund-pagination {
+.outstanding-pr-pagination {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   margin-bottom: 1.5rem;
-  animation: fadeInUp 0.8s ease-out 0.5s both;
 }
 
-.processed-refund-pagination-button {
+.outstanding-pr-pagination-button {
   padding: 0.6rem 1.2rem;
   border-radius: 0.75rem;
   border: 1.5px solid rgba(0, 28, 119, 0.2);
@@ -469,24 +423,24 @@
   box-shadow: 0 2px 8px 0 rgba(0, 28, 119, 0.08);
 }
 
-.processed-refund-pagination-button:hover:not(:disabled) {
+.outstanding-pr-pagination-button:hover:not(:disabled) {
   background: var(--color-primary);
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px 0 rgba(0, 28, 119, 0.2);
 }
 
-.processed-refund-pagination-button:disabled {
+.outstanding-pr-pagination-button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
 
-.processed-refund-pagination-page-numbers {
+.outstanding-pr-pagination-page-numbers {
   display: flex;
   gap: 0.5rem;
 }
 
-.processed-refund-pagination-page-button {
+.outstanding-pr-pagination-page-button {
   padding: 0.6rem 1rem;
   border-radius: 0.75rem;
   border: 1.5px solid rgba(0, 28, 119, 0.2);
@@ -499,7 +453,7 @@
   min-width: 2.5rem;
 }
 
-.processed-refund-pagination-page-button:hover:not(:disabled) {
+.outstanding-pr-pagination-page-button:hover:not(:disabled) {
   background: linear-gradient(135deg,
       hsla(225, 100%, 23%, 0.1),
       hsla(225, 100%, 30%, 0.1));
@@ -507,19 +461,19 @@
   box-shadow: 0 4px 12px 0 rgba(0, 28, 119, 0.15);
 }
 
-.processed-refund-pagination-page-button.active {
+.outstanding-pr-pagination-page-button.active {
   background: linear-gradient(135deg, var(--color-primary), hsl(225, 100%, 30%));
   color: white;
   border-color: var(--color-primary);
   box-shadow: 0 4px 12px 0 rgba(0, 28, 119, 0.3);
 }
 
-.processed-refund-pagination-page-button:disabled {
+.outstanding-pr-pagination-page-button:disabled {
   cursor: not-allowed;
 }
 
 /* Footer (match Inquiry) */
-.processed-refund-footer {
+.outstanding-pr-footer {
   width: 100%;
   text-align: right;
   color: hsl(220, 15%, 50%);
@@ -527,111 +481,111 @@
   margin-top: 0.5rem;
 }
 
-.processed-refund-footer b {
+.outstanding-pr-footer b {
   color: var(--color-primary);
   font-weight: 700;
 }
 
 /* Responsive Design */
 @media (max-width: 896px) {
-  .processed-refund-title {
+  .outstanding-pr-title {
     font-size: 2.5rem;
   }
 
-  .processed-refund-subtitle {
+  .outstanding-pr-subtitle {
     font-size: 1rem;
   }
 
-  .processed-refund-toolbar {
-     flex-direction: column;
-     align-items: stretch;
+  .outstanding-pr-toolbar {
+    flex-direction: column;
+    align-items: stretch;
     padding: 1rem;
   }
 
-  .processed-refund-search-group,
-  .processed-refund-date-group {
+  .outstanding-pr-search-group,
+  .outstanding-pr-date-group {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .processed-refund-search,
-  .processed-refund-date-input,
-  .processed-refund-select,
-  .processed-refund-refresh-btn {
+  .outstanding-pr-search,
+  .outstanding-pr-date-input,
+  .outstanding-pr-select,
+  .outstanding-pr-refresh-btn {
     width: 100%;
   }
 
-  .processed-refund-info-card {
+  .outstanding-pr-info-card {
     flex-direction: column;
     gap: 1.5rem;
     text-align: center;
     justify-content: center;
   }
 
-  .processed-refund-info-links,
-  .processed-refund-info-actions {
+  .outstanding-pr-info-links,
+  .outstanding-pr-info-actions {
     flex-direction: column;
     width: 100%;
     gap: 0.75rem;
   }
 
-  .processed-refund-info-action-btn {
+  .outstanding-pr-info-action-btn {
     width: 100%;
     padding: 0.7rem 1rem;
   }
 
-  .processed-refund-table-container {
+  .outstanding-pr-table-container {
     overflow-x: auto;
   }
 
-  .processed-refund-table {
+  .outstanding-pr-table {
     min-width: 600px;
   }
 
-  .processed-refund-table th,
-  .processed-refund-table td {
+  .outstanding-pr-table th,
+  .outstanding-pr-table td {
     padding: 0.75rem 0.8rem;
     font-size: 0.85rem;
   }
 
-  .processed-refund-pagination {
+  .outstanding-pr-pagination {
     flex-wrap: wrap;
   }
 
-  .processed-refund-pagination-page-numbers {
+  .outstanding-pr-pagination-page-numbers {
     flex-wrap: wrap;
     justify-content: center;
   }
 
-  .processed-refund-footer {
+  .outstanding-pr-footer {
     font-size: 0.9rem;
     text-align: right;
   }
 }
 
 @media (max-width: 640px) {
-  .processed-refund-content {
+  .outstanding-pr-content {
     padding: 2rem 0.75rem 1.5rem;
   }
 
-  .processed-refund-title {
+  .outstanding-pr-title {
     font-size: 2rem;
   }
 
-  .processed-refund-subtitle {
+  .outstanding-pr-subtitle {
     font-size: 0.9rem;
   }
 
-  .processed-refund-table th {
+  .outstanding-pr-table th {
     font-size: 0.75rem;
   }
 
-  .processed-refund-table td {
+  .outstanding-pr-table td {
     font-size: 0.8rem;
   }
 
-  .processed-refund-pagination-button,
-  .processed-refund-pagination-page-button {
+  .outstanding-pr-pagination-button,
+  .outstanding-pr-pagination-page-button {
     padding: 0.5rem 0.8rem;
     font-size: 0.9rem;
   }
