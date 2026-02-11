@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import NavBar from "./Navbar";
 import "../styles/OutstandingPR.css";
 import { outstandingPRData, ROWS_PER_PAGE, prColumns } from "../dummy_data/outstanding_pr_data";
@@ -177,7 +178,16 @@ const PRTable: React.FC = () => {
                                 <tr key={idx}>
                                     {prColumns.map((col) => (
                                         <td key={col.key}>
-                                            {row[col.key as keyof typeof row]}
+                                            {col.key === 'prNo' ? (
+                                                <Link 
+                                                    to={`/view-pr`}
+                                                    className="pr-link"
+                                                >
+                                                    {row[col.key as keyof typeof row]}
+                                                </Link>
+                                            ) : (
+                                                row[col.key as keyof typeof row]
+                                            )}
                                         </td>
                                     ))}
                                 </tr>

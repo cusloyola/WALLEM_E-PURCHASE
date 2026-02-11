@@ -1,14 +1,14 @@
 import React from 'react';
 import NavBar from '../components/Navbar';
-import ProfileSecurity from '../components/ProfileSecurity';
 
-const EditProfile: React.FC = () => {
+const DisapprovedPR: React.FC = () => {
   return (
     <div className="dashboard-layout">
       <NavBar />
       <main>
-        <h1>Edit Profile</h1>
-        <ProfileSecurity />
+        <h1>Disapproved PR</h1>
+        <p>This is a placeholder for the Disapproved PR page.</p>
+        <p>Replace this content with your actual layout and components.</p>
       </main>
       <footer>
         <small>© {new Date().getFullYear()} Wallem Philippines Shipping Inc.</small>
@@ -17,4 +17,4 @@ const EditProfile: React.FC = () => {
   );
 };
 
-export default EditProfile;
+export default DisapprovedPR;

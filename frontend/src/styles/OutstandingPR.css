@@ -590,3 +590,21 @@
     font-size: 0.9rem;
   }
 }
+
+.pr-link {
+  color: var(--color-primary);
+  text-decoration: underline;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.pr-link:hover {
+  color: var(--color-primary-dark, #1a365d);
+  text-decoration: underline;
+}
+
+.pr-link:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}

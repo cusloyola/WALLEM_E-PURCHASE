@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NavBar from "./Navbar";
 import "../styles/OutstandingPR.css";
 import { pendingPRData, ROWS_PER_PAGE, pprColumns } from "../dummy_data/ppr_data";
+import { Link } from "react-router";
 
 const PPRTable: React.FC = () => {
     const [search, setSearch] = useState("");
@@ -177,7 +178,16 @@ const PPRTable: React.FC = () => {
                                 <tr key={idx}>
                                     {pprColumns.map((col) => (
                                         <td key={col.key}>
-                                            {row[col.key as keyof typeof row]}
+                                            {col.key === 'prNo' ? (
+                                                <Link 
+                                                    to={`/view-pr`}
+                                                    className="pr-link"
+                                                >
+                                                    {row[col.key as keyof typeof row]}
+                                                </Link>
+                                            ) : (
+                                                row[col.key as keyof typeof row]
+                                            )}
                                         </td>
                                     ))}
                                 </tr>

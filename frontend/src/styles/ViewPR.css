@@ -1,0 +1,383 @@
+.view-pr-root {
+  min-height: 100vh;
+  background: var(--background-clr);
+  color: var(--text-clr);
+}
+
+.view-pr-content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.view-pr-container {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.9)
+  );
+  backdrop-filter: blur(20px);
+  border-radius: 1.5rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 20px 60px 0 rgba(0, 28, 119, 0.15);
+  padding: 2.5rem;
+  margin: 2rem 0;
+}
+
+/* Header Styles */
+.view-pr-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.view-pr-header-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1rem;
+}
+
+.view-pr-number {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.view-pr-approval {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  justify-self: right;
+}
+
+.view-pr-approver {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-self: end;
+}
+
+.view-pr-date-requested {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-self: end;
+}
+
+.view-pr-label {
+  font-weight: 600;
+  color: var(--text-clr);
+  font-size: 0.95rem;
+}
+
+.view-pr-value {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.view-pr-value.highlight {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* Request Info */
+.view-pr-request-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(0, 28, 119, 0.05);
+  border-radius: 0.75rem;
+  border-left: 4px solid var(--color-primary);
+  flex-wrap: wrap;
+}
+
+.view-pr-link {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Section Styles */
+.view-pr-section {
+  margin-bottom: 2rem;
+}
+
+.view-pr-section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* Purpose Section */
+.view-pr-purpose {
+  border: 1px solid rgba(0, 28, 119, 0.2);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.view-pr-purpose-header {
+  background: var(--color-primary);
+  color: white;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+}
+
+.view-pr-purpose-content {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+}
+
+/* Table Styles */
+.view-pr-table-container {
+  border: 1px solid rgba(0, 28, 119, 0.2);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.view-pr-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.view-pr-table th {
+  background: var(--color-primary);
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.view-pr-table th:last-child {
+  border-right: none;
+}
+
+.view-pr-table td {
+  padding: 1rem;
+  border-right: 1px solid rgba(0, 28, 119, 0.1);
+  border-bottom: 1px solid rgba(0, 28, 119, 0.1);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.view-pr-table td:last-child {
+  border-right: none;
+}
+
+.view-pr-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.view-pr-note-column {
+  width: 25%;
+  min-width: 200px;
+}
+
+.view-pr-note-header {
+  line-height: 1.4;
+}
+
+.view-pr-note-cell {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Files Section */
+.view-pr-files {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.view-pr-file-group {
+  flex: 1;
+  min-width: 250px;
+}
+
+.view-pr-file-label {
+  display: block;
+  font-weight: 600;
+  color: var(--text-clr);
+  margin-bottom: 0.5rem;
+}
+
+.view-pr-file-info {
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 28, 119, 0.2);
+  border-radius: 0.5rem;
+  color: rgba(0, 0, 0, 0.6);
+  font-style: italic;
+}
+
+/* Approval Section */
+.view-pr-approval-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 2rem;
+  padding: 1.5rem;
+  background: rgba(0, 28, 119, 0.05);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(0, 28, 119, 0.1);
+}
+
+.view-pr-approval-item {
+  margin-bottom: 1rem;
+}
+
+.view-pr-signature-box {
+  margin-top: 0.5rem;
+}
+
+.view-pr-signature-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid rgba(0, 28, 119, 0.2);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.view-pr-signature-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 28, 119, 0.1);
+}
+
+.view-pr-remarks-textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 0.75rem;
+  border: 1px solid rgba(0, 28, 119, 0.2);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+  resize: vertical;
+}
+
+.view-pr-remarks-textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 28, 119, 0.1);
+}
+
+/* Previous Remarks */
+.view-pr-previous-remarks {
+  margin-bottom: 2rem;
+}
+
+.view-pr-previous-remarks-textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 1rem;
+  border: 1px solid rgba(0, 28, 119, 0.2);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  resize: vertical;
+  outline: none;
+}
+
+/* Action Buttons */
+.view-pr-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 28, 119, 0.1);
+}
+
+.view-pr-btn {
+  padding: 0.875rem 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  min-width: 120px;
+}
+
+.view-pr-btn-submit {
+  background: linear-gradient(135deg, var(--color-primary), hsl(220, 100%, 45%));
+  color: white;
+  box-shadow: 0 4px 15px 0 rgba(0, 28, 119, 0.2);
+}
+
+.view-pr-btn-submit:hover {
+  background: linear-gradient(135deg, hsl(220, 100%, 40%), hsl(220, 100%, 35%));
+  box-shadow: 0 6px 20px 0 rgba(0, 28, 119, 0.3);
+  transform: translateY(-2px);
+}
+
+.view-pr-btn-cancel {
+  background: linear-gradient(135deg, hsl(0, 84%, 60%), hsl(0, 89%, 50%));
+  color: white;
+  box-shadow: 0 4px 15px 0 rgba(224, 31, 81, 0.2);
+}
+
+.view-pr-btn-cancel:hover {
+  background: linear-gradient(135deg, hsl(0, 84%, 50%), hsl(0, 89%, 40%));
+  box-shadow: 0 6px 20px 0 rgba(224, 31, 81, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .view-pr-content {
+    padding: 1rem;
+  }
+
+  .view-pr-container {
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .view-pr-header-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    text-align: left;
+  }
+
+  .view-pr-approval,
+  .view-pr-approver,
+  .view-pr-date-requested {
+    justify-self: start;
+  }
+
+  .view-pr-request-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .view-pr-approval-section {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .view-pr-files {
+    flex-direction: column;
+  }
+
+  .view-pr-table-container {
+    overflow-x: auto;
+  }
+
+  .view-pr-table {
+    min-width: 600px;
+  }
+
+  .view-pr-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}
