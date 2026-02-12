@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import NavBar from '../components/Navbar';
 import '../styles/ViewPR.css';
 
-const ViewPR: React.FC = () => {
+const ViewPO: React.FC = () => {
   const { prNo } = useParams<{ prNo: string }>();
 
   return (
@@ -141,7 +141,7 @@ const ViewPR: React.FC = () => {
 
           {/* Action Buttons */}
           <div className="view-pr-actions">
-            <button className=" view-pr-btn view-pr-btn-cancel">Cancel PR</button>
+            <button className="view-pr-btn view-pr-btn-cancel">Cancel PR</button>
             <button className="view-pr-btn view-pr-btn-submit">Submit</button>
           </div>
         </div>
@@ -150,4 +150,4 @@ const ViewPR: React.FC = () => {
   );
 };
 
-export default ViewPR;
+export default ViewPO;

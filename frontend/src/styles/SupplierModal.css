@@ -1,0 +1,221 @@
+/* Supplier Modal Styles */
+.supplier-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.supplier-modal {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.9)
+  );
+  backdrop-filter: blur(20px);
+  border-radius: 1.5rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 20px 60px 0 rgba(0, 28, 119, 0.15);
+  width: 95%;
+  max-width: 1000px;
+  max-height: 95vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.supplier-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem 1rem 2rem;
+  margin-bottom: 1rem;
+}
+
+.supplier-modal-header h2 {
+  color: var(--color-primary);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.supplier-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.supplier-modal-close:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.supplier-modal-content {
+  padding: 0 2rem;
+}
+
+.supplier-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.supplier-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.supplier-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.supplier-form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.supplier-form-label {
+  font-weight: 600;
+  color: var(--text-clr);
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.supplier-form-label.required::after {
+  content: ' *';
+  color: #dc2626;
+}
+
+.supplier-form-input {
+  padding: 0.6rem;
+  border: 2px solid var(--line-clr);
+  border-radius: 0.5rem;
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background: white;
+}
+
+.supplier-form-input.error {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
+
+.supplier-form-input.error:focus {
+  outline: none;
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.supplier-form-error {
+  color: #dc2626;
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+  font-weight: 500;
+  display: block;
+}
+
+.supplier-form-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+}
+
+.supplier-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid rgba(0, 28, 119, 0.1);
+  margin-top: 1rem;
+}
+
+.supplier-modal-cancel,
+.supplier-modal-save {
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  min-width: 100px;
+  font-size: 0.9rem;
+}
+
+.supplier-modal-cancel {
+  background: #6b7280;
+  color: white;
+  box-shadow: 0 4px 15px 0 rgba(107, 114, 128, 0.2);
+}
+
+.supplier-modal-cancel:hover {
+  background: #4b5563;
+  box-shadow: 0 6px 20px 0 rgba(107, 114, 128, 0.3);
+  transform: translateY(-2px);
+}
+
+.supplier-modal-save {
+  background: var(--color-primary);
+  color: white;
+  box-shadow: 0 4px 15px 0 rgba(0, 28, 119, 0.2);
+}
+
+.supplier-modal-save:hover {
+  background: var(--accent-clr);
+  box-shadow: 0 6px 20px 0 rgba(0, 28, 119, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .supplier-modal {
+    width: 95%;
+    max-width: none;
+    margin: 1rem;
+  }
+
+  .supplier-modal-header {
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+  }
+
+  .supplier-modal-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .supplier-modal-content {
+    padding: 0 1.5rem;
+  }
+
+  .supplier-form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .supplier-modal-actions {
+    padding: 1.5rem;
+    flex-direction: column;
+  }
+
+  .supplier-modal-cancel,
+  .supplier-modal-save {
+    width: 100%;
+    padding: 1rem;
+  }
+}

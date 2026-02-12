@@ -5,9 +5,6 @@ const NewPR: React.FC = () => {
   return (
     <div className="dashboard-layout">
       <NavBar />
-      {/*       <header>
-        <h1>E-Purchase</h1>
-      </header> */}
       <main>
         <h1>New Purchase Request</h1>
         <p className="outstanding-pr-subtitle">

@@ -91,7 +91,6 @@
   padding: 1rem;
   background: rgba(0, 28, 119, 0.05);
   border-radius: 0.75rem;
-  border-left: 4px solid var(--color-primary);
   flex-wrap: wrap;
 }
 
@@ -307,7 +306,7 @@
 }
 
 .view-pr-btn-submit {
-  background: linear-gradient(135deg, var(--color-primary), hsl(220, 100%, 45%));
+  background: var(--color-primary);
   color: white;
   box-shadow: 0 4px 15px 0 rgba(0, 28, 119, 0.2);
 }
@@ -319,13 +318,13 @@
 }
 
 .view-pr-btn-cancel {
-  background: linear-gradient(135deg, hsl(0, 84%, 60%), hsl(0, 89%, 50%));
+  background: var(--cancel-clr);
   color: white;
   box-shadow: 0 4px 15px 0 rgba(224, 31, 81, 0.2);
 }
 
 .view-pr-btn-cancel:hover {
-  background: linear-gradient(135deg, hsl(0, 84%, 50%), hsl(0, 89%, 40%));
+    background: var(--cancel-clr);
   box-shadow: 0 6px 20px 0 rgba(224, 31, 81, 0.3);
   transform: translateY(-2px);
 }
