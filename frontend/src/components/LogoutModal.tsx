@@ -30,7 +30,7 @@ const LogoutModal: React.FC<LogoutModalProps> = ({ isOpen, onConfirm, onCancel }
 
   return (
     <div className="logout-modal-backdrop">
-      <div className="logout-modal" ref={modalRef}>
+      <div className="logout-modal w-full max-w-lg mx-auto p-4" ref={modalRef}>
         <h2>Confirm Logout</h2>
         <p>Are you sure you want to log out?</p>
         <div className="logout-modal-actions">

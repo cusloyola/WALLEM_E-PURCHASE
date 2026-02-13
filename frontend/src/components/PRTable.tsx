@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import NavBar from "./Navbar";
 import "../styles/OutstandingPR.css";
 import { outstandingPRData, ROWS_PER_PAGE, prColumns } from "../dummy_data/outstanding_pr_data";
+import { Footer } from "./Footer";
 
 const PRTable: React.FC = () => {
     const [search, setSearch] = useState("");
@@ -90,139 +91,137 @@ const PRTable: React.FC = () => {
                         below to refine your results.
                     </p>
                 </header>
-            <section
-                className="outstanding-pr-toolbar"
-                aria-label="Search and filter"
-            >
-                <div className="outstanding-pr-search-group">
-                    <label htmlFor="searchBy" className="outstanding-pr-label">
-                        Search By:
-                    </label>
-                    <select
-                        id="searchBy"
-                        value={searchBy}
-                        onChange={(e) => setSearchBy(e.target.value)}
-                        className="outstanding-pr-select"
-                    >
-                        {prColumns.map((col) => (
-                            <option key={col.key} value={col.key}>
-                                {col.label}
-                            </option>
-                        ))}
-                    </select>
-                    <input
-                        type="text"
-                        className="outstanding-pr-search"
-                        placeholder="Type to search..."
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                        aria-label="Search value"
-                    />
-                </div>
-
-                <div className="outstanding-pr-date-group">
-                    <label htmlFor="dateFrom" className="outstanding-pr-label">
-                        From:
-                    </label>
-                    <input
-                        type="date"
-                        id="dateFrom"
-                        className="outstanding-pr-date-input"
-                        value={dateFrom}
-                        onChange={(e) => setDateFrom(e.target.value)}
-                    />
-                    <label htmlFor="dateTo" className="outstanding-pr-label">
-                        To:
-                    </label>
-                    <input
-                        type="date"
-                        id="dateTo"
-                        className="outstanding-pr-date-input"
-                        value={dateTo}
-                        onChange={(e) => setDateTo(e.target.value)}
-                    />
-                    <button
-                        className="outstanding-pr-refresh-btn"
-                        onClick={handleRefresh}
-                        title="Refresh filters"
-                    >
-                        Refresh
-                    </button>
-                </div>
-            </section>
-
-            <section
-                className="outstanding-pr-table-container"
-                aria-label="Outstanding purchase requests"
-            >
-                <table className="outstanding-pr-table">
-                    <thead>
-                        <tr>
+                <section
+                    className="outstanding-pr-toolbar"
+                    aria-label="Search and filter"
+                >
+                    <div className="outstanding-pr-search-group">
+                        <label htmlFor="searchBy" className="outstanding-pr-label">
+                            Search By:
+                        </label>
+                        <select
+                            id="searchBy"
+                            value={searchBy}
+                            onChange={(e) => setSearchBy(e.target.value)}
+                            className="outstanding-pr-select"
+                        >
                             {prColumns.map((col) => (
-                                <th key={col.key}>{col.label}</th>
+                                <option key={col.key} value={col.key}>
+                                    {col.label}
+                                </option>
                             ))}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {paginatedRows.length === 0 ? (
+                        </select>
+                        <input
+                            type="text"
+                            className="outstanding-pr-search"
+                            placeholder="Type to search..."
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                            aria-label="Search value"
+                        />
+                    </div>
+
+                    <div className="outstanding-pr-date-group">
+                        <label htmlFor="dateFrom" className="outstanding-pr-label">
+                            From:
+                        </label>
+                        <input
+                            type="date"
+                            id="dateFrom"
+                            className="outstanding-pr-date-input"
+                            value={dateFrom}
+                            onChange={(e) => setDateFrom(e.target.value)}
+                        />
+                        <label htmlFor="dateTo" className="outstanding-pr-label">
+                            To:
+                        </label>
+                        <input
+                            type="date"
+                            id="dateTo"
+                            className="outstanding-pr-date-input"
+                            value={dateTo}
+                            onChange={(e) => setDateTo(e.target.value)}
+                        />
+                        <button
+                            className="outstanding-pr-refresh-btn"
+                            onClick={handleRefresh}
+                            title="Refresh filters"
+                        >
+                            Refresh
+                        </button>
+                    </div>
+                </section>
+
+                <section
+                    className="outstanding-pr-table-container"
+                    aria-label="Outstanding purchase requests"
+                >
+                    <table className="outstanding-pr-table">
+                        <thead>
                             <tr>
-                                <td
-                                    colSpan={prColumns.length}
-                                    className="outstanding-pr-no-data"
-                                >
-                                    No records found.
-                                </td>
+                                {prColumns.map((col) => (
+                                    <th key={col.key}>{col.label}</th>
+                                ))}
                             </tr>
-                        ) : (
-                            paginatedRows.map((row, idx) => (
-                                <tr key={idx}>
-                                    {prColumns.map((col) => (
-                                        <td key={col.key}>
-                                            {col.key === 'prNo' ? (
-                                                <Link 
-                                                    to={`/view-pr`}
-                                                    className="pr-link"
-                                                >
-                                                    {row[col.key as keyof typeof row]}
-                                                </Link>
-                                            ) : (
-                                                row[col.key as keyof typeof row]
-                                            )}
-                                        </td>
-                                    ))}
+                        </thead>
+                        <tbody>
+                            {paginatedRows.length === 0 ? (
+                                <tr>
+                                    <td
+                                        colSpan={prColumns.length}
+                                        className="outstanding-pr-no-data"
+                                    >
+                                        No records found.
+                                    </td>
                                 </tr>
-                            ))
-                        )}
-                    </tbody>
-                </table>
-            </section>
+                            ) : (
+                                paginatedRows.map((row, idx) => (
+                                    <tr key={idx}>
+                                        {prColumns.map((col) => (
+                                            <td key={col.key}>
+                                                {col.key === 'prNo' ? (
+                                                    <Link
+                                                        to={`/view-pr`}
+                                                        className="pr-link"
+                                                    >
+                                                        {row[col.key as keyof typeof row]}
+                                                    </Link>
+                                                ) : (
+                                                    row[col.key as keyof typeof row]
+                                                )}
+                                            </td>
+                                        ))}
+                                    </tr>
+                                ))
+                            )}
+                        </tbody>
+                    </table>
+                </section>
 
-            <nav
-                className="outstanding-pr-pagination"
-                aria-label="Pagination"
-            >
-                <button
-                    className="outstanding-pr-pagination-button"
-                    onClick={() => goToPage(page - 1)}
-                    disabled={page === 1}
+                <nav
+                    className="outstanding-pr-pagination"
+                    aria-label="Pagination"
                 >
-                    Previous
-                </button>
-                <div className="outstanding-pr-pagination-page-numbers">
-                    {renderPageNumbers()}
-                </div>
-                <button
-                    className="outstanding-pr-pagination-button"
-                    onClick={() => goToPage(page + 1)}
-                    disabled={page === totalPages}
-                >
-                    Next
-                </button>
-            </nav>
+                    <button
+                        className="outstanding-pr-pagination-button"
+                        onClick={() => goToPage(page - 1)}
+                        disabled={page === 1}
+                    >
+                        Previous
+                    </button>
+                    <div className="outstanding-pr-pagination-page-numbers">
+                        {renderPageNumbers()}
+                    </div>
+                    <button
+                        className="outstanding-pr-pagination-button"
+                        onClick={() => goToPage(page + 1)}
+                        disabled={page === totalPages}
+                    >
+                        Next
+                    </button>
+                </nav>
+                <Footer />
 
-            <footer className="outstanding-pr-footer">
-                No. of Records: <b>{filteredRows.length}</b>
-            </footer>
             </main>
         </div>
     );

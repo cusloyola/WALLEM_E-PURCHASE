@@ -3,6 +3,7 @@ import NavBar from "./Navbar";
 import "../styles/OutstandingPR.css";
 import { pendingPRData, ROWS_PER_PAGE, pprColumns } from "../dummy_data/manual_pr_rfp_data";
 import { Link } from "react-router";
+import { Footer } from "./Footer";
 
 const ManualPRTable: React.FC = () => {
     const [search, setSearch] = useState("");
@@ -245,11 +246,8 @@ const ManualPRTable: React.FC = () => {
                         Next
                     </button>
                 </nav>
-
-                <footer className="outstanding-pr-footer">
-                    No. of Records: <b>{filteredRows.length}</b>
-                </footer>
             </main>
+            <Footer />
         </div>
     );
 };

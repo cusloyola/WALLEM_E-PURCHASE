@@ -137,7 +137,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                   <span>Disapproved PR</span>
                 </Link>
               </li>
-              <li className={isActive("/reports") ? "active" : ""}>
+            {/*   <li className={isActive("/reports") ? "active" : ""}>
                 <Link to="/reports" onClick={onClose}>
                   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
                     {isActive("/reports") ? (
@@ -148,7 +148,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                   </svg>
                   <span>Reports</span>
                 </Link>
-              </li>
+              </li> */}
               <li className={isActive("/configuration") ? "active" : ""}>
                 <Link to="/configuration" onClick={onClose}>
                   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">

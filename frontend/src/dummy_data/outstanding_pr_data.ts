@@ -277,15 +277,17 @@ export const outstandingPRData = [
 ];
 
 export const prColumns = [
-    { key: "prNo", label: "PR NO" },
+    { key: "prNo", label: "PR Number" },
     { key: "requestedBy", label: "Requested by" },
     { key: "prStatus", label: "PR Status" },
-    { key: "prType", label: "PR TYPE" },
+    { key: "poNo", label: "PO Number" },
+
+    { key: "prType", label: "PR Type" },
     { key: "dateCreated", label: "Date Created" },
     { key: "requiredBefore", label: "Required Before" },
     { key: "vesselNameOrOther", label: "Vessel Name/Other" },
-    { key: "remarks", label: "REMARKS" },
-    { key: "rfpNo", label: "RFP NO" },
+    { key: "remarks", label: "Remarks" },
+    { key: "rfpNo", label: "RFP Number" },
 ];
 
 export const ROWS_PER_PAGE = 5;

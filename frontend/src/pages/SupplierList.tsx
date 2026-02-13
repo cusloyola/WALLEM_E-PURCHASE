@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from '../components/Navbar';
 import SupplierForm from '../components/SupplierForm';
+import { Footer } from '../components/Footer';
 
 const SupplierList: React.FC = () => {
     return (
@@ -13,6 +14,7 @@ const SupplierList: React.FC = () => {
                 </p>
                 <SupplierForm />
             </main>
+            <Footer />
         </div>
     );
 };

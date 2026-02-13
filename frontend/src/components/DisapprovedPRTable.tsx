@@ -3,6 +3,7 @@ import NavBar from "./Navbar";
 import "../styles/OutstandingPR.css";
 import { disapprovedPRData, ROWS_PER_PAGE, dprColumns } from "../dummy_data/disapproved_pr_data";
 import { Link } from "react-router";
+import { Footer } from "./Footer";
 
 const DisapprovedPRTable: React.FC = () => {
     const [search] = useState("");
@@ -162,11 +163,8 @@ const DisapprovedPRTable: React.FC = () => {
                         Next
                     </button>
                 </nav>
-
-                <footer className="outstanding-pr-footer">
-                    No. of Records: <b>{filteredRows.length}</b>
-                </footer>
             </main>
+            <Footer />
         </div>
     );
 };

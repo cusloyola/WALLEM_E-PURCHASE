@@ -3,7 +3,9 @@ import PRTable from '../components/PRTable';
 
 const OutstandingPR: React.FC = () => {
   return (
-    <PRTable />
+    <>
+      <PRTable />
+    </>
   );
 };
 

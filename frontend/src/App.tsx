@@ -27,7 +27,6 @@ import ProtectedRoute from './components/ProtectedRoute.tsx'
 import { Routes, Route, Navigate } from 'react-router-dom'
 
 
-
 function App() {
   return (
     <>
@@ -35,6 +34,7 @@ function App() {
         {/* Example starter routes */}
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
+
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
         <Route path="/new-pr" element={<ProtectedRoute><NewPR /></ProtectedRoute>} />
         <Route path="/outstanding-pr" element={<ProtectedRoute><OutstandingPR /></ProtectedRoute>} />
@@ -49,8 +49,9 @@ function App() {
         <Route path="/view-po" element={<ProtectedRoute><ViewPO /></ProtectedRoute>} />
         <Route path="/new-po" element={<ProtectedRoute><NewPO /></ProtectedRoute>} />
         <Route path="/supplier-list" element={<ProtectedRoute><SupplierList /></ProtectedRoute>} />
-        <Route path="/user-rights" element={<ProtectedRoute><UserRights /></ProtectedRoute>} />
+        <Route path="/user-rights" element={<ProtectedRoute><UserRights /></ProtectedRoute>} />        
         <Route path="*" element={<NotFound />} />
+
       </Routes>
       <ToastContainer position="top-center" autoClose={1500} limit={1} theme="colored" />
     </>

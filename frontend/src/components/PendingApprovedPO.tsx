@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import NavBar from "./Navbar";
 import "../styles/OutstandingPR.css";
 import { pendApprData, ROWS_PER_PAGE, pendApprColumns } from "../dummy_data/pending_approved_data";
+import { Footer } from "./Footer";
 
 const PendingApprovedPO: React.FC = () => {
     const [search, setSearch] = useState("");
@@ -227,10 +228,7 @@ const PendingApprovedPO: React.FC = () => {
                         Next
                     </button>
                 </nav>
-
-                <footer className="outstanding-pr-footer">
-                    No. of Records: <b>{filteredRows.length}</b>
-                </footer>
+                <Footer />
             </main>
         </div>
     );

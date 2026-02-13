@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import NavBar from "./Navbar";
 import "../styles/OutstandingPR.css";
 import { withoutPOData, ROWS_PER_PAGE, prColumns } from "../dummy_data/without_po_data";
+import { Footer } from "./Footer";
 
 const WPOTable: React.FC = () => {
     const [search, setSearch] = useState("");
@@ -232,11 +233,8 @@ const WPOTable: React.FC = () => {
                         Next
                     </button>
                 </nav>
-
-                <footer className="outstanding-pr-footer">
-                    No. of Records: <b>{filteredRows.length}</b>
-                </footer>
             </main>
+            <Footer />
         </div>
     );
 };

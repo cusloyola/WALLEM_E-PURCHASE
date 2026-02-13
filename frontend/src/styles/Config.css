@@ -1,22 +1,21 @@
 .dashboard-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     width: 100%;
     max-width: 1400px;
-    justify-items: center;
+    justify-items: stretch;
     align-items: stretch;
+    gap: 1rem;
     padding-bottom: 0.5rem;
-    padding-left: 4rem;
-    padding-right: 4rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
     animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
 /* Premium Glassmorphism Cards */
 .dashboard-card {
-    max-width: 380px;
-    min-width: 260px;
-    margin-right: 0.5rem;
-    margin-left: 0.5rem;
+    margin-right: 0;
+    margin-left: 0;
     width: 100%;
     background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(20px);
@@ -26,7 +25,7 @@
         0 8px 32px 0 rgba(0, 28, 119, 0.08),
         0 2px 8px 0 rgba(0, 28, 119, 0.04),
         inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
-    padding: 2.5rem 2rem 2rem 2rem;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -35,7 +34,31 @@
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1.5px solid rgba(255, 255, 255, 0.5);
     position: relative;
-    cursor: pointer;
+    cursor: default;
+    overflow: hidden;
+}
+.config-card {
+    margin-right: 0;
+    margin-left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 1.5rem;
+    box-shadow:
+        0 8px 32px 0 rgba(0, 28, 119, 0.08),
+        0 2px 8px 0 rgba(0, 28, 119, 0.04),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-decoration: none;
+    color: var(--text-clr);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
+    position: relative;
+    cursor: default;
     overflow: hidden;
 }
 
@@ -183,8 +206,10 @@
 
 	.dashboard-cards {
 		max-width: 98vw;
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 		gap: 1.5rem;
+		padding-left: 1rem;
+		padding-right: 1rem;
 	}
 }
 
@@ -195,7 +220,7 @@
 	}
 
 	.dashboard-cards {
-		grid-template-columns: 1fr;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 		gap: 1.2rem;
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
@@ -203,8 +228,6 @@
 	}
 
 	.dashboard-card {
-		min-width: 240px;
-		max-width: 400px;
 		padding: 2rem 1.5rem 1.5rem 1.5rem;
 	}
 
@@ -240,8 +263,6 @@
 	}
 
 	.dashboard-card {
-		min-width: 200px;
-		max-width: 100%;
 		padding: 1.5rem 1.2rem 1.2rem 1.2rem;
 	}
 
@@ -286,6 +307,10 @@
 
 .dashboard-card:nth-child(3) {
 	animation-delay: 0.3s;
+}
+
+.dashboard-card:nth-child(4) {
+	animation-delay: 0.4s;
 }
 
 
