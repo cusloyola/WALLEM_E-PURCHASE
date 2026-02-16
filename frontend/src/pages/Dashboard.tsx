@@ -11,7 +11,7 @@ const Dashboard: React.FC = () => {
       <NavBar />
       <main className="dashboard-content">
         <section>
-          <h1>Welcome back Mr/Ms. {userName}!</h1>
+          <h1 className='outstanding-pr-title'>Welcome back Mr/Ms. {userName}!</h1>
           <p>
             Continue where you left off. <br />
           </p>

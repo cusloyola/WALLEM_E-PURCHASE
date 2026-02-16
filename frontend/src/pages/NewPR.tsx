@@ -7,7 +7,7 @@ const NewPR: React.FC = () => {
     <div className="dashboard-layout">
       <NavBar />
       <main>
-        <h1>New Purchase Request</h1>
+        <h1 className="outstanding-pr-title">New Purchase Request</h1>
         <p className="outstanding-pr-subtitle">
           Create a new purchase request by filling out the form below.
         </p>

@@ -7,10 +7,6 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg,
-      hsl(225, 30%, 96%) 0%,
-      hsl(220, 35%, 97%) 50%,
-      hsl(215, 30%, 95%) 100%);
   position: relative;
   overflow-x: hidden;
 }
@@ -23,10 +19,6 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background:
-    radial-gradient(circle at 20% 30%, hsla(225, 100%, 23%, 0.04) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, hsla(225, 100%, 25%, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, hsla(225, 100%, 30%, 0.02) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -65,13 +57,12 @@
 
 /* Toolbar - Glassmorphism */
 .outstanding-pr-toolbar {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: start;
+  gap: 1.25rem;
   margin-bottom: 1.5rem;
   width: 100%;
-  max-width: none;
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -80,23 +71,48 @@
     0 4px 20px 0 rgba(0, 28, 119, 0.08),
     0 1px 4px 0 rgba(0, 28, 119, 0.04),
     inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
-  padding: 1.2rem 1.5rem;
+  padding: 1.25rem 1.5rem;
   border: 1.5px solid rgba(255, 255, 255, 0.5);
   transition: all 0.3s ease;
+  overflow: visible;
+}
+
+.outstanding-pr-toolbar > * {
+  width: 100%;
 }
 
 
-.outstanding-pr-search-group {
+.outstanding-pr-search-group,
+.outstanding-pr-date-group {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 1rem;
-  flex: 1;
+  gap: 0.75rem 1rem;
+  width: 100%;
 }
 
 .outstanding-pr-date-group {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  justify-content: flex-start;
+}
+
+.outstanding-pr-search-group .outstanding-pr-label,
+.outstanding-pr-date-group .outstanding-pr-label {
+  flex: 0 0 auto;
+}
+
+.outstanding-pr-search-group .outstanding-pr-select,
+.outstanding-pr-search-group .outstanding-pr-search {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+
+.outstanding-pr-date-group .outstanding-pr-date-input {
+  flex: 1 1 150px;
+  min-width: 0;
+}
+
+.outstanding-pr-date-group .outstanding-pr-refresh-btn {
+  flex: 0 0 auto;
 }
 
 .outstanding-pr-label {
@@ -141,7 +157,9 @@
 
 /* Search Input */
 .outstanding-pr-search {
-  flex: 1;
+  flex: 1 1 220px;
+  width: auto;
+  max-width: none;
   padding: 0.6rem 1rem;
   border-radius: 0.75rem;
   border: 1.5px solid rgba(0, 28, 119, 0.15);
@@ -151,6 +169,7 @@
   box-shadow: 0 2px 8px 0 rgba(0, 28, 119, 0.06);
   transition: all 0.3s ease;
   min-width: 150px;
+  min-height: 48px;
 }
 
 .outstanding-pr-search:focus {
@@ -307,26 +326,18 @@
   background: linear-gradient(135deg, hsl(200, 75%, 45%), hsl(200, 80%, 40%));
 }
 
-.outstanding-pr-info-action-btn.forward {
-  background: linear-gradient(135deg, hsl(120, 60%, 50%), hsl(120, 65%, 45%));
-}
-
-.outstanding-pr-info-action-btn.forward:hover:not(:disabled) {
-  background: linear-gradient(135deg, hsl(120, 65%, 45%), hsl(120, 70%, 40%));
-}
 
 /* Table Container - Glassmorphism */
 .outstanding-pr-table-container {
   width: 100%;
-  background: rgba(255, 255, 255, 0.8);
+  /*   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-radius: 1rem;
   box-shadow:
     0 8px 32px 0 rgba(0, 28, 119, 0.1),
     0 2px 8px 0 rgba(0, 28, 119, 0.06),
     inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
-  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  border: 1.5px solid rgba(255, 255, 255, 0.6); */
   overflow: hidden;
   margin-bottom: 1.5rem;
 }
@@ -353,6 +364,7 @@
   text-transform: uppercase;
   font-size: 0.85rem;
   letter-spacing: 0.5px;
+  white-space: nowrap;
 }
 
 .outstanding-pr-checkbox-col {
@@ -392,6 +404,17 @@
   padding: 1rem 1.2rem;
   color: var(--text-clr);
   vertical-align: middle;
+  white-space: nowrap;
+}
+
+.outstanding-pr-table [data-column-key="account"] .outstanding-pr-value {
+  white-space: normal;
+  word-break: break-word;
+}
+
+.outstanding-pr-table [data-column-key="remarks"] .outstanding-pr-value {
+  white-space: normal;
+  word-break: break-word;
 }
 
 .outstanding-pr-no-data {
@@ -400,6 +423,29 @@
   color: hsl(220, 15%, 50%);
   font-style: italic;
   font-size: 1.1rem;
+}
+
+/* Responsive Column Visibility (before card layout) */
+@media (max-width: 980px) {
+  .outstanding-pr-table [data-column-key="remarks"],
+  .outstanding-pr-table [data-column-key="vesselNameOrOther"],
+  .outstanding-pr-table [data-column-key="rfpNo"] {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .outstanding-pr-table [data-column-key="requiredBefore"],
+  .outstanding-pr-table [data-column-key="poNumber"],
+  .outstanding-pr-table [data-column-key="option"] {
+    display: none;
+  }
+}
+
+@media (max-width: 780px) {
+  .outstanding-pr-table [data-column-key="dateCreated"] {
+    display: none;
+  }
 }
 
 /* Pagination */
@@ -487,6 +533,13 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1220px) {
+  .outstanding-pr-toolbar {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    padding: 1rem 1.25rem;
+  }
+}
+
 @media (max-width: 896px) {
   .outstanding-pr-title {
     font-size: 2.5rem;
@@ -497,9 +550,9 @@
   }
 
   .outstanding-pr-toolbar {
-    flex-direction: column;
-    align-items: stretch;
+    grid-template-columns: 1fr;
     padding: 1rem;
+    gap: 1rem;
   }
 
   .outstanding-pr-search-group,
@@ -513,6 +566,14 @@
   .outstanding-pr-select,
   .outstanding-pr-refresh-btn {
     width: 100%;
+    max-width: 100%;
+  }
+
+  .outstanding-pr-search-group .outstanding-pr-select,
+  .outstanding-pr-search-group .outstanding-pr-search,
+  .outstanding-pr-date-group .outstanding-pr-date-input,
+  .outstanding-pr-date-group .outstanding-pr-refresh-btn {
+    flex: 0 0 auto;
   }
 
   .outstanding-pr-info-card {
@@ -564,6 +625,20 @@
 }
 
 @media (max-width: 640px) {
+  .outstanding-pr-toolbar {
+    padding: 0.75rem;
+  }
+
+  .outstanding-pr-search-group,
+  .outstanding-pr-date-group {
+    min-width: 100%;
+    gap: 0.75rem;
+  }
+
+  .outstanding-pr-label {
+    width: 100%;
+  }
+
   .outstanding-pr-content {
     padding: 2rem 0.75rem 1.5rem;
   }
@@ -574,6 +649,10 @@
 
   .outstanding-pr-subtitle {
     font-size: 0.9rem;
+  }
+
+  .outstanding-pr-table {
+    min-width: 100%;
   }
 
   .outstanding-pr-table th {
@@ -589,6 +668,120 @@
     padding: 0.5rem 0.8rem;
     font-size: 0.9rem;
   }
+
+  .outstanding-pr-table,
+  .outstanding-pr-table thead,
+  .outstanding-pr-table tbody,
+  .outstanding-pr-table th,
+  .outstanding-pr-table td,
+  .outstanding-pr-table tr {
+    display: block;
+  }
+
+  .outstanding-pr-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .outstanding-pr-table tbody tr {
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 0.85rem;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 28, 119, 0.08);
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      0 4px 20px 0 rgba(0, 28, 119, 0.08),
+      0 1px 4px 0 rgba(0, 28, 119, 0.04),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+  }
+
+  .outstanding-pr-table tbody tr::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(135deg, var(--color-primary), hsl(225, 100%, 30%));
+  }
+
+  .outstanding-pr-cell {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid rgba(0, 28, 119, 0.08);
+    font-size: 0.85rem;
+  }
+
+  .outstanding-pr-cell:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .outstanding-pr-cell::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    flex: 0 0 45%;
+  }
+
+  .outstanding-pr-value {
+    flex: 1;
+    font-weight: 600;
+    color: var(--text-clr);
+    display: block;
+    word-break: break-all;
+    font-size: 0.75rem;
+  }
+
+  .outstanding-pr-cell[data-column-key="account"] {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .outstanding-pr-cell[data-column-key="account"]::before {
+    flex: 0 0 auto;
+  }
+
+  .outstanding-pr-cell[data-column-key="account"] .outstanding-pr-value {
+    width: 100%;
+  }
+
+  .outstanding-pr-cell[data-column-key="remarks"] {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .outstanding-pr-cell[data-column-key="remarks"]::before {
+    flex: 0 0 auto;
+  }
+
+  .outstanding-pr-cell[data-column-key="remarks"] .outstanding-pr-value {
+    width: 100%;
+  }
+
+  .outstanding-pr-value.status-with-action {
+    display: flex;
+    flex-direction: left;
+    gap: 0.35rem;
+  }
+
+  .pr-link {
+    word-break: break-word;
+  }
 }
 
 .pr-link {
@@ -596,6 +789,13 @@
   text-decoration: underline;
   font-weight: 600;
   transition: all 0.2s ease;
+}
+
+.status-with-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
 }
 
 .pr-link:hover {

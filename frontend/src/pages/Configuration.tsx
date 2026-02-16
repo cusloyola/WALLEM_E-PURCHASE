@@ -10,7 +10,7 @@ const Configuration: React.FC = () => {
       <NavBar />
       <main className="dashboard-content">
         <section>
-          <h1>Configuration</h1>
+          <h1 className='outstanding-pr-title'>Configuration</h1>
           <p>
             Please select an option.<br />
           </p>

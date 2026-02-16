@@ -8,7 +8,7 @@ const SupplierList: React.FC = () => {
         <div className="dashboard-layout">
             <NavBar />
             <main>
-                <h1>Supplier List</h1>
+                <h1 className='outstanding-pr-title'>Supplier List</h1>
                 <p className="outstanding-pr-subtitle">
                     Edit existing supplier record by filling out the form below.
                 </p>

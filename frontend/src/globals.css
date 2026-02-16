@@ -201,7 +201,6 @@ footer small {
   table {
     font-size: 0.875rem;
     overflow-x: auto;
-    display: block;
     white-space: nowrap;
   }
 

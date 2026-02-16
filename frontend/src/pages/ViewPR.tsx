@@ -31,22 +31,25 @@ const ViewPR: React.FC = () => {
                 <span className="view-pr-value">28 Jan 2026 12:51</span>
               </div>
             </div>
-
           </div>
 
           {/* Request Info Section */}
           <div className="view-pr-request-info">
-            <span className="view-pr-label">Request For</span>
-            <span className="view-pr-link">Purchase/Others</span>
-            <span className="view-pr-label">Account of</span>
-            <span className="view-pr-link">WPSI/MIS TV Box Replacement</span>
+            <div className="view-pr-request-item">
+              <span className="view-pr-label">Request For</span>
+              <span className="view-pr-link">Purchase/Others</span>
+            </div>
+            <div className="view-pr-request-item">
+              <span className="view-pr-label">Account of</span>
+              <span className="view-pr-link">WPSI/MIS TV Box Replacement</span>
+            </div>
           </div>
 
           {/* Purpose Section */}
           <div className="view-pr-section">
             <div className="view-pr-purpose">
               <div className="view-pr-purpose-header">
-                <span /* className="view-pr-section-title" */>Purpose/Justification</span>
+                <span className="view-pr-section-title">Purpose/Justification</span>
               </div>
               <div className="view-pr-purpose-content">
                 Replacement of defective TV Box located as 2F Cashier
@@ -66,16 +69,17 @@ const ViewPR: React.FC = () => {
                     <th className="view-pr-note-column">
                       <div className="view-pr-note-header">
                         Required Before:<br />
-                        2026-02-28<br />                      </div>
+                        2026-02-28
+                      </div>
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>1</td>
-                    <td>unit</td>
-                    <td>X96 mini android player</td>
-                    <td className="view-pr-note-cell"></td>
+                    <td data-label="QTY">1</td>
+                    <td data-label="Unit No.">unit</td>
+                    <td data-label="Articles/Services">X96 mini android player</td>
+                    <td className="view-pr-note-cell" data-label="Note"></td>
                   </tr>
                 </tbody>
               </table>
@@ -141,7 +145,7 @@ const ViewPR: React.FC = () => {
 
           {/* Action Buttons */}
           <div className="view-pr-actions">
-            <button className=" view-pr-btn view-pr-btn-cancel">Cancel PR</button>
+            <button className="view-pr-btn view-pr-btn-cancel">Cancel PR</button>
             <button className="view-pr-btn view-pr-btn-submit">Submit</button>
           </div>
         </div>

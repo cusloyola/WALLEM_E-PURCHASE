@@ -281,13 +281,11 @@ export const prColumns = [
     { key: "requestedBy", label: "Requested by" },
     { key: "prStatus", label: "PR Status" },
     { key: "poNo", label: "PO Number" },
-
     { key: "prType", label: "PR Type" },
     { key: "dateCreated", label: "Date Created" },
     { key: "requiredBefore", label: "Required Before" },
     { key: "vesselNameOrOther", label: "Vessel Name/Other" },
     { key: "remarks", label: "Remarks" },
-    { key: "rfpNo", label: "RFP Number" },
 ];
 
 export const ROWS_PER_PAGE = 5;

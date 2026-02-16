@@ -160,7 +160,9 @@ const PRTable: React.FC = () => {
                         <thead>
                             <tr>
                                 {prColumns.map((col) => (
-                                    <th key={col.key}>{col.label}</th>
+                                    <th key={col.key} data-column-key={col.key}>
+                                        {col.label}
+                                    </th>
                                 ))}
                             </tr>
                         </thead>
@@ -175,24 +177,36 @@ const PRTable: React.FC = () => {
                                     </td>
                                 </tr>
                             ) : (
-                                paginatedRows.map((row, idx) => (
-                                    <tr key={idx}>
-                                        {prColumns.map((col) => (
-                                            <td key={col.key}>
-                                                {col.key === 'prNo' ? (
-                                                    <Link
-                                                        to={`/view-pr`}
-                                                        className="pr-link"
+                                <>
+                                    {paginatedRows.map((row, idx) => (
+                                        <tr key={idx}>
+                                            {prColumns.map((col) => {
+                                                const cellValue = row[col.key as keyof typeof row];
+                                                return (
+                                                    <td
+                                                        key={col.key}
+                                                        data-label={col.label}
+                                                        data-column-key={col.key}
+                                                        className="outstanding-pr-cell"
                                                     >
-                                                        {row[col.key as keyof typeof row]}
-                                                    </Link>
-                                                ) : (
-                                                    row[col.key as keyof typeof row]
-                                                )}
-                                            </td>
-                                        ))}
-                                    </tr>
-                                ))
+                                                        {col.key === 'prNo' ? (
+                                                            <Link
+                                                                to={`/view-pr`}
+                                                                className="pr-link outstanding-pr-value"
+                                                            >
+                                                                {cellValue}
+                                                            </Link>
+                                                        ) : (
+                                                            <span className="outstanding-pr-value">
+                                                                {cellValue}
+                                                            </span>
+                                                        )}
+                                                    </td>
+                                                );
+                                            })}
+                                        </tr>
+                                    ))}
+                                </>
                             )}
                         </tbody>
                     </table>

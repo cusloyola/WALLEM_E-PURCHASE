@@ -80,6 +80,34 @@ const WPOTable: React.FC = () => {
         setPage(1);
     };
 
+    const renderCellContent = (
+        row: (typeof withoutPOData)[number],
+        col: typeof prColumns[number]
+    ) => {
+        const cellValue = row[col.key as keyof typeof row];
+
+        if (col.key === 'prNo') {
+            return (
+                <Link to={`/view-pr`} className="pr-link outstanding-pr-value">
+                    {cellValue}
+                </Link>
+            );
+        }
+
+        if (col.key === 'prStatus' && row.prStatus === 'Approved') {
+            return (
+                <div className="outstanding-pr-value status-with-action">
+                    <span>{cellValue}</span>
+                    <Link to={`/new-po`} className="pr-link">
+                        Create PO
+                    </Link>
+                </div>
+            );
+        }
+
+        return <span className="outstanding-pr-value">{cellValue}</span>;
+    };
+
     return (
         <div className="outstanding-pr-root">
             <NavBar />
@@ -160,7 +188,9 @@ const WPOTable: React.FC = () => {
                         <thead>
                             <tr>
                                 {prColumns.map((col) => (
-                                    <th key={col.key}>{col.label}</th>
+                                    <th key={col.key} data-column-key={col.key}>
+                                        {col.label}
+                                    </th>
                                 ))}
                             </tr>
                         </thead>
@@ -175,37 +205,22 @@ const WPOTable: React.FC = () => {
                                     </td>
                                 </tr>
                             ) : (
-                                paginatedRows.map((row, idx) => (
-                                    <tr key={idx}>
-                                        {prColumns.map((col) => (
-                                            <td key={col.key}>
-                                                {col.key === 'prNo' ? (
-                                                    <Link
-                                                        to={`/view-pr`}
-                                                        className="pr-link"
-                                                    >
-                                                        {row[col.key as keyof typeof row]}
-                                                    </Link>
-                                                ) : col.key === 'prStatus' && row.prStatus === 'Approved' ? (
-                                                    <div className="status-with-action">
-                                                        <span>{row[col.key as keyof typeof row]}</span>
-                                                        <Link
-                                                            to={`/new-po`}
-                                                            className="pr-link"
-                                                            style={{
-                                                                display: 'block',
-                                                            }}
-                                                        >
-                                                            Create PO
-                                                        </Link>
-                                                    </div>
-                                                ) : (
-                                                    row[col.key as keyof typeof row]
-                                                )}
-                                            </td>
-                                        ))}
-                                    </tr>
-                                ))
+                                <>
+                                    {paginatedRows.map((row, idx) => (
+                                        <tr key={idx}>
+                                            {prColumns.map((col) => (
+                                                <td
+                                                    key={col.key}
+                                                    data-label={col.label}
+                                                    data-column-key={col.key}
+                                                    className="outstanding-pr-cell"
+                                                >
+                                                    {renderCellContent(row, col)}
+                                                </td>
+                                            ))}
+                                        </tr>
+                                    ))}
+                                </>
                             )}
                         </tbody>
                     </table>

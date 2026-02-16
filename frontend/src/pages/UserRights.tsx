@@ -7,7 +7,7 @@ const UserRights: React.FC = () => {
     <div className="dashboard-layout">
       <NavBar />
       <main>
-        <h1>User Rights</h1>
+        <h1 className='outstanding-pr-title'>User Rights</h1>
         <p>Edit user rights by changing the user type for each user.</p>
         <UserRightsForm />
       </main>

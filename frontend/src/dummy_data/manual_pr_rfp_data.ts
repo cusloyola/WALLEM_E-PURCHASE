@@ -190,7 +190,6 @@ export const pprColumns = [
     { key: "requiredBefore", label: "Required Before" },
     { key: "vesselNameOrOther", label: "Vessel Name/Other" },
     { key: "remarks", label: "REMARKS" },
-    { key: "rfpNo", label: "RFP NO" },
 ];
 
 export const ROWS_PER_PAGE = 5;
